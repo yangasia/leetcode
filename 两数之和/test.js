@@ -1,8 +1,21 @@
 global.print = function (...text){
     console.log(...text);
 }
-const nums = [2,7,11,15];
-const target = 9;
+function makearr(len,max){
+    var result = [];
+    for(let i = 0;i<len;i++){
+        var temp=Math.floor(Math.random()*max);
+        if(temp == 0){
+            i--;
+        }else{
+            result.push(temp);
+        }
+    }
+    return result;
+}
+// makearr(10000,8951);
+const nums = makearr(10000,8951);
+const target = 5476;
 var twoSum = function(nums, target){
     let len = nums.length;
     // var numst =  nums.concat();//数组深拷贝
@@ -32,6 +45,14 @@ var twoSum = function(nums, target){
             return [nums.indexOf(a),nums.indexOf(b)];
         }
     }
+    return undefined;
     // print(numst);
 }
-print(twoSum(nums,target));
+var t1 = new Date()
+var code = twoSum(nums,target);
+var t2 = new Date()
+print(nums);
+print(t2-t1+' ms');
+print("index:",code);
+print("nums:",nums[code[0]],nums[code[1]]);
+// print(nums.includes(0));
