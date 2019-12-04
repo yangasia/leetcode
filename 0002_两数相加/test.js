@@ -82,8 +82,30 @@ let addTwoNumbers = function(l1, l2) {
     // let l3 = ((Number(l1)+Number(l2)).toString()).split('').reverse();
     // return loopArray2ListNode(l3);
 };
+class ListNOde {
+    constructor(val){
+        this.val = val;
+        this.next = null;
+    }
+}
 addTwoNumbers = function (l1,l2){
-    
+    if(!l1) return l2;
+    if(!l2) return r1;
+    l1.val += l2.val;
+    if(l1.val > 9){
+        l1.val-=10;
+        if (l1.next !== null && l2.next !== null){
+            l1.next.val++;
+        }
+        else if (l1.next === null){
+            l1.next = new ListNOde(1);
+        }
+        else if (l2.next === null){
+            l2.next = new ListNOde(1);
+        }
+    }
+    l1.next = addTwoNumbers(l1.next,l2.next);
+    return l1;
 }
 let result = addTwoNumbers(l1,l2);
 print(result);

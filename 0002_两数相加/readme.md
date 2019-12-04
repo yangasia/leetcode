@@ -12,4 +12,75 @@
 
 ##### 推荐实现方式
 ```javascript
+class ListNode {
+    constructor(val){
+        this.val = val;
+        this.next = null;
+    }
+}
+function loopListNode2Array (list){
+    let temp = []
+    for(;;){
+        temp.push(list.val);
+        if(list.next!=null){
+            list = list.next;
+        }
+        else{
+            return temp;
+        }
+    }
+}
+function loopArray2ListNode(arr){
+    var temp = [];
+    for(let i = 0,len = arr.length;i<len;i++){
+        temp.push({
+            val:arr[i],
+            next:null,
+        })
+    }
+    for(let i = 0,len = temp.length;i<len-1;i++){
+        temp[i].next = temp[i+1];
+    }
+    return temp[0];
+}
+let l1 = {
+    val:2,
+    next:{
+        val:4,
+        next:{
+            val:3,
+            next:null,
+        },
+    },
+}
+let l2 = {
+    val:5,
+    next:{
+        val:6,
+        next:{
+            val:4,
+            next:null,
+        },
+    },
+}
+let addTwoNumbers = function (l1,l2){
+    if(!l1) return l2;
+    if(!l2) return r1;
+    l1.val += l2.val;
+    if(l1.val > 9){
+        l1.val-=10;
+        if (l1.next !== null && l2.next !== null){
+            l1.next.val++;
+        }
+        else if (l1.next === null){
+            l1.next = new ListNode(1);
+        }
+        else if (l2.next === null){
+            l2.next = new ListNode(1);
+        }
+    }
+    l1.next = addTwoNumbers(l1.next,l2.next);
+    return l1;
+}
+let result = addTwoNumbers(l1,l2);
 ```
