@@ -65,7 +65,7 @@ let l2 = {
 }
 let addTwoNumbers = function (l1,l2){
     if(!l1) return l2;
-    if(!l2) return r1;
+    if(!l2) return l1;
     l1.val += l2.val;
     if(l1.val > 9){
         l1.val-=10;
